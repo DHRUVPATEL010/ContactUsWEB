@@ -1,0 +1,98 @@
+﻿
+@model Web1.Models.ContactUs
+<h2 style="text-align:center">Contact Us</h2>
+<br/>
+<br/>
+
+@using (Html.BeginForm("AddData", "ContactUs", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.FirstName , new { @class = "required" })
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" , placeholder = "FirstName "})
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.LastName , new { @class = "required" })
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" , placeholder = "LastName " })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CompanyName )
+        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" , placeholder = "CompanyName" , data_val = "false", data_val_required = "false"})
+        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+    </div>
+    <br />
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Phone , new { @class = "required" })
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" , placeholder = "Phone " })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Mobile)
+                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control" , placeholder = "Mobile " , data_val = "false", data_val_required = "false"})
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email , new { @class = "required" })
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" , placeholder ="Email "})
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ReasonForContact , new { @class = "required" })
+        @Html.DropDownListFor(model => model.ReasonForContact, new SelectList(new[] { "Raise a complaint", "View demo", "Try new" }), "Select an option", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ReasonForContact, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment )
+        @Html.TextBoxFor(model => model.Comment, new { @class = "form-control" , placeholder = "Comment" , data_val = "false", data_val_required = "false"})
+        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+        }
+    </style>
+    <style>
+        .input-validation-error {
+            border: 1px solid red !important;
+        }
+
+            .input-validation-error:focus,
+            .input-validation-error:active {
+                outline: none !important; /* Remove the blue outline on focus and active */
+                border: 1px solid red !important; /* Keep the red border on focus and active */
+            }
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+}
+
